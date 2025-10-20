@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ilford United Football Club</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            color: white;
+            line-height: 1.6;
+        }
+
+        .header {
+            background: linear-gradient(90deg, #d32f2f 0%, #b71c1c 100%);
+            padding: 2rem 0;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+
+        .values-section {
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .value-card {
+            background: rgba(255,255,255,0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .value-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .value-card h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .dominance { background: linear-gradient(135deg, #ff4081, #c2185b); }
+        .teamwork { background: linear-gradient(135deg, #2196f3, #1976d2); }
+        .perseverance { background: linear-gradient(135deg, #ff9800, #f57c00); }
+        .welcome { background: linear-gradient(135deg, #4caf50, #388e3c); }
+
+        .navigation {
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .nav-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .nav-button {
+            background: linear-gradient(135deg, #d32f2f, #b71c1c);
+            color: white;
+            text-decoration: none;
+            padding: 1.2rem 1.5rem;
+            border-radius: 10px;
+            font-weight: 500;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            display: block;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(211, 47, 47, 0.3);
+        }
+
+        .nav-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(211, 47, 47, 0.4);
+            background: linear-gradient(135deg, #e53935, #c62828);
+        }
+
+        .nav-button.secondary {
+            background: linear-gradient(135deg, #424242, #212121);
+            box-shadow: 0 4px 15px rgba(66, 66, 66, 0.3);
+        }
+
+        .nav-button.secondary:hover {
+            background: linear-gradient(135deg, #616161, #424242);
+            box-shadow: 0 8px 25px rgba(66, 66, 66, 0.4);
+        }
+
+        .gallery-section {
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.02);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .description {
+            padding: 3rem 2rem;
+            text-align: center;
+            background: rgba(255,255,255,0.05);
+            margin: 2rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+
+        .description h4 {
+            font-size: 1.5rem;
+            font-weight: 400;
+            margin-bottom: 1rem;
+            color: #ffd700;
+        }
+
+        .description p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .values-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .nav-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <h1>Ilford United</h1>
+        <p>Professional Football Club • London, England</p>
+    </header>
+
+    <section class="values-section">
+        <div class="values-grid">
+            <div class="value-card dominance">
+                <h2>Dominance</h2>
+                <p>Excellence on and off the pitch</p>
+            </div>
+            <div class="value-card teamwork">
+                <h2>Teamwork</h2>
+                <p>United we stand, divided we fall</p>
+            </div>
+            <div class="value-card perseverance">
+                <h2>Perseverance</h2>
+                <p>Never give up, never surrender</p>
+            </div>
+            <div class="value-card welcome">
+                <h2>Welcome to Ilford United</h2>
+                <p>Your local football family</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="navigation">
+        <div class="nav-grid">
+            <a href="./aboutus.html" class="nav-button">About Us</a>
+            <a href="./womensteam.html" class="nav-button secondary">Women's Team</a>
+            <a href="./academy.html" class="nav-button">Academy</a>
+            <a href="./community.html" class="nav-button secondary">Community</a>
+            <a href="./contactus.html" class="nav-button">Contact Us</a>
+        </div>
+    </section>
+
+    <section class="gallery-section">
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="https://footballgroundguide.com/app/uploads/2024/03/Accrington-Wham-Stadium-480x320.jpg" alt="Stadium View">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.gc.bradfordcityfcservices.co.uk/fit-in/1600x1600/b2245ac0-0986-11f0-bf6f-d330f208bcd8.jpg" alt="Match Day Atmosphere">
+            </div>
+        </div>
+    </section>
+
+    <section class="description">
+        <h4><strong>We are a professional football club based in Ilford, London.</strong></h4>
+        <p>Established with a rich history and passionate community support, Ilford United represents the heart and soul of football in East London. Our commitment to excellence, community engagement, and youth development makes us more than just a football club – we're a family.</p>
+    </section>
+</body>
+</html>

@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Women's Team - Ilford United Football Club</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            color: white;
+            line-height: 1.6;
+        }
+
+        .header {
+            background: linear-gradient(90deg, #d32f2f 0%, #b71c1c 100%);
+            padding: 2rem 0;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+
+        .back-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: linear-gradient(135deg, #d32f2f, #b71c1c);
+            color: white;
+            text-decoration: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(211, 47, 47, 0.3);
+            z-index: 1000;
+        }
+
+        .back-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(211, 47, 47, 0.4);
+            background: linear-gradient(135deg, #e53935, #c62828);
+        }
+
+        .team-intro {
+            padding: 3rem 2rem;
+            text-align: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .intro-card {
+            background: rgba(255,255,255,0.1);
+            padding: 3rem;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+            margin: 2rem auto;
+            max-width: 800px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+        }
+
+        .intro-card h2 {
+            color: #ffd700;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .intro-card p {
+            color: #e0e0e0;
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .stat-item {
+            background: rgba(211, 47, 47, 0.1);
+            padding: 1.5rem;
+            border-radius: 15px;
+            border: 1px solid rgba(211, 47, 47, 0.3);
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #d32f2f;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: #e0e0e0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .players-section {
+            padding: 3rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h1 {
+            font-size: 2.5rem;
+            color: #ffd700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+        }
+
+        .players-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .player-card {
+            background: rgba(255,255,255,0.1);
+            border-radius: 15px;
+            padding: 1.5rem;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .player-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #d32f2f, #ffd700);
+        }
+
+        .player-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .player-image {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 1rem;
+            border: 3px solid #d32f2f;
+            box-shadow: 0 4px 15px rgba(211, 47, 47, 0.3);
+        }
+
+        .player-name {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #ffd700;
+            margin-bottom: 0.5rem;
+        }
+
+        .player-position {
+            font-size: 1rem;
+            color: #e0e0e0;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .player-number {
+            font-size: 1.2rem;
+            color: #d32f2f;
+            font-weight: 700;
+            background: rgba(211, 47, 47, 0.1);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            display: inline-block;
+        }
+
+        .position-section {
+            margin-bottom: 4rem;
+        }
+
+        .position-title {
+            color: #ffd700;
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .achievements {
+            padding: 3rem 2rem;
+            background: rgba(255,255,255,0.05);
+            margin: 2rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+
+        .achievements h2 {
+            color: #ffd700;
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .achievements-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .achievement-item {
+            background: rgba(255,255,255,0.1);
+            padding: 1.5rem;
+            border-radius: 10px;
+            border-left: 4px solid #d32f2f;
+        }
+
+        .achievement-year {
+            color: #d32f2f;
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .achievement-title {
+            color: #ffd700;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .achievement-desc {
+            color: #e0e0e0;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .players-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            }
+            
+            .back-button {
+                position: relative;
+                top: auto;
+                left: auto;
+                margin: 1rem;
+                display: inline-block;
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="./frontpage.html" class="back-button">← Back to Home</a>
+
+    <header class="header">
+        <h1>Women's Team</h1>
+        <p>Ilford United Women • Professional Football • League Champions</p>
+    </header>
+
+    <section class="team-intro">
+        <div class="intro-card">
+            <h2>Ilford United Women</h2>
+            <p>Our women's team represents the pinnacle of women's football in East London. Established in 2018, we've quickly risen through the ranks to become one of the most respected women's teams in the region. Our commitment to excellence, community engagement, and youth development has made us a force to be reckoned with in women's football.</p>
+            
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <span class="stat-number">2</span>
+                    <span class="stat-label">League Titles</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">1</span>
+                    <span class="stat-label">Cup Wins</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">19</span>
+                    <span class="stat-label">Players</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">67.4%</span>
+                    <span class="stat-label">Win Rate</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="players-section">
+        <div class="section-title">
+            <h1>First Team Squad</h1>
+        </div>
+
+        <div class="position-section">
+            <h2 class="position-title">Goalkeepers</h2>
+            <div class="players-grid">
+                <div class="player-card">
+                    <img src="https://cdn.futwiz.com/assets/img/fc25/faces/265326.png" alt="Sarah Lanny" class="player-image">
+                    <h3 class="player-name">Sarah Lanny</h3>
+                    <p class="player-position">Goalkeeper</p>
+                    <span class="player-number">1</span>
+                </div>
+                <div class="player-card">
+                    <img src="https://cdn.futwiz.com/assets/img/fc25/faces/71494.png" alt="Jackqueline Fenton" class="player-image">
+                    <h3 class="player-name">Jackqueline Fenton</h3>
+                    <p class="player-position">Goalkeeper</p>
+                    <span class="player-number">31</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="position-section">
+            <h2 class="position-title">Defenders</h2>
+            <div class="players-grid">
+                <div class="player-card">
+                    <img src="https://cdn.futwiz.com/assets/img/fc25/faces/226327.png" alt="Paula Higgins" class="player-image">
+                    <h3 class="player-name">Paula Higgins</h3>
+                    <p class="player-position">Defender</p>
+                    <span class="player-number">2</span>
+                </div>
+                <div class="player-card">
+                    <img src="https://cdn.futwiz.com/assets/img/fc25/faces/272021.png" alt="Maria Rodriguez" class="player-image">
+                    <h3 class="player-name">Maria Rodriguez</h3>
+                    <p class="player-position">Defender</p>
+                    <span class="player-number">3</span>
+                </div>
+                <div class="player-card">
+                    <img src="https://cdn.futwiz.com/assets/img/fc25/faces/227405.png" alt="Mia Vlados" class="player-image">
+                    <h3 class="player-name">Mia Vlados</h3>
+                    <p class="player-position">Defender</p>
+                    <span class="player-number">4</span>
+                </div>
+                <div class="player-card">
+                    <img src="https://cdn.futwiz.com/assets/img/fc25/faces/246219.png" alt="Laura Niasse" class="player-image">
+                    <h3 class="player-name">Laura Niasse</h3>
+                    <p class="player-position">Defender</p>
+                    <span class="player-number">5</span>
+                </div>
+                <div class="player-card">
+                    <img src="https://cdn.futwiz.com/assets/img/fc25/faces/275588.png" alt="Lynne La Leau" class="player-image">
+                    <h3 class="player-name">Lynne La Leau</h3>
+                    <p class="player-position">Defender</p>
+                    <span class="player-number">12</span>
+                </div>
+                <div class="player-card">
+                    <img src="https://cdn.futwiz.com/assets/img/fc25/faces/73652.png" alt="Amelia O'Brien" class="player-image">
+                    <h3 class="player-name">Amelia O'Brien</h3>
+                    <p class="player-position">Defender</p>
+                    <span class="player-number">13</span>
+                </div>
+                <div class="player-card">
+                    <img src="https://cdn.futwiz.com/assets/img/fc25/faces/273239.png" alt="Fatema Ahmed" class="player-image">
+                    <h3 class="player-name">Fatema Ahmed</h3>
+                    <p class="player-position">Defender</p>
+                    <span class="player-number">14</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="position-section">
+            <h2 class="position-title">Midfielders</h2>
+            <div class="players-grid">
+                <div class="player-card">
+                    <img src="https://cdn.futwiz.com/assets/img/fc25/faces/264924.png" alt="Sophie Davis" class="player-image">
+                    <h3 class="player-name">Sophie Davis</h3>
+                    <p class="player-position">Midfielder</p>
+                    <span class="player-number">6</span>
+                </div>
+                <div class="player-card">
+                    <img src="https://cdn.futwiz.com/assets/img/fc25/faces/227316.png" alt="Christina Wilson" class="player-image">
+                    <h3 class="player-name">Christina Wilson</h3>
+                    <p class="player-position">Midfielder</p>
+                    <span class="player-number">7</span>
+                </div>
+                <div class="player-card">
+                    <img src="https://cdn.futwiz.com/assets/img/fc25/faces/265900.png" alt="Amanda Lenehan" class="player-image">
+                    <h3 class="player-name">Amanda Lenehan</h3>
+                    <p class="player-position">Midfielder</p>
+                    <span class="player-number">8</span>
+                </div>
+                <div class="player-card">
+                    <img src="https://cdn.futwiz.com/assets/img/fc25/faces/265001.png" alt="Nicole Taylor" class="player-image">
+                    <h3 class="player-name">Nicole Taylor</h3>
+                    <p class="player-position">Midfielder</p>
+                    <span class="player-number">17</span>
+                </div>
+                <div class="player-card">
+                    <img src="https://cdn.futwiz.com/assets/img/fc25/faces/73764.png" alt="Nafeesa Furqan" class="player-image">
+                    <h3 class="player-name">Nafeesa Furqan</h3>
+                    <p class="player-position">Midfielder</p>
+                    <span class="player-number">28</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="position-section">
+            <h2 class="position-title">Forwards</h2>
+            <div class="players-grid">
+                <div class="player-card">
+                    <img src="https://cdn.futwiz.com/assets/img/fc25/faces/226339.png" alt="Nishie Marquez" class="player-image">
+                    <h3 class="player-name">Nishie Marquez</h3>
+                    <p class="player-position">Forward</p>
+                    <span class="player-number">9</span>
+                </div>
+                <div class="player-card">
+                    <img src="https://cdn.futwiz.com/assets/img/fc25/faces/226309.png" alt="Jennifer Clark" class="player-image">
+                    <h3 class="player-name">Jennifer Clark</h3>
+                    <p class="player-position">Forward</p>
+                    <span class="player-number">10</span>
+                </div>
+                <div class="player-card">
+                    <img src="https://cdn.futwiz.com/assets/img/fc25/faces/265147.png" alt="Michelle Hall" class="player-image">
+                    <h3 class="player-name">Michelle Hall</h3>
+                    <p class="player-position">Forward</p>
+                    <span class="player-number">11</span>
+                </div>
+                <div class="player-card">
+                    <img src="https://cdn.futwiz.com/assets/img/fc25/faces/264995.png" alt="Stephanie Young" class="player-image">
+                    <h3 class="player-name">Stephanie Young</h3>
+                    <p class="player-position">Forward</p>
+                    <span class="player-number">19</span>
+                </div>
+                <div class="player-card">
+                    <img src="https://cdn.futwiz.com/assets/img/fc25/faces/272164.png" alt="Jamila Al-Mazroui" class="player-image">
+                    <h3 class="player-name">Jamila Al-Mazroui</h3>
+                    <p class="player-position">Forward</p>
+                    <span class="player-number">21</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="achievements">
+        <h2>Recent Achievements</h2>
+        <div class="achievements-grid">
+            <div class="achievement-item">
+                <div class="achievement-year">2025</div>
+                <div class="achievement-title">FA cup Winners</div>
+                <div class="achievement-desc">Won the Women's FA cup after a 4-3 win against Leicester City!</div>
+            </div>
+            <div class="achievement-item">
+                <div class="achievement-year">2023</div>
+                <div class="achievement-title">Champions of 2nd Division</div>
+                <div class="achievement-desc">Back-to-back champions of England!</div>
+            </div>
+            <div class="achievement-item">
+                <div class="achievement-year">2022</div>
+                <div class="achievement-title">Champions of 3rd Division</div>
+                <div class="achievement-desc">100 points in the league, history made!</div>
+            </div>
+            <div class="achievement-item">
+                <div class="achievement-year">2020</div>
+                <div class="achievement-title">Promotion to Professional league football!</div>
+                <div class="achievement-desc">Dedication and hard work led the way.</div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

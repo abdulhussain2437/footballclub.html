@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Ilford United Football Club</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            color: white;
+            line-height: 1.6;
+        }
+
+        .header {
+            background: linear-gradient(90deg, #d32f2f 0%, #b71c1c 100%);
+            padding: 2rem 0;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+
+        .back-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: linear-gradient(135deg, #d32f2f, #b71c1c);
+            color: white;
+            text-decoration: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(211, 47, 47, 0.3);
+            z-index: 1000;
+        }
+
+        .back-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(211, 47, 47, 0.4);
+            background: linear-gradient(135deg, #e53935, #c62828);
+        }
+
+        .hero-section {
+            padding: 3rem 2rem;
+            text-align: center;
+            background: rgba(255,255,255,0.05);
+            margin: 2rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+
+        .hero-section h2 {
+            font-size: 2.2rem;
+            color: #ffd700;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .hero-section p {
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+
+        .contact-details {
+            padding: 3rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .details-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .detail-card {
+            background: rgba(255,255,255,0.1);
+            padding: 1.5rem;
+            border-radius: 15px;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .detail-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #d32f2f, #ffd700);
+        }
+
+        .detail-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .detail-title {
+            color: #ffd700;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .detail-text {
+            color: #e0e0e0;
+            opacity: 0.9;
+            font-size: 0.95rem;
+        }
+
+        .contact-section {
+            padding: 3rem 2rem;
+            max-width: 800px;
+            margin: 0 auto 3rem;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .section-title h2 {
+            font-size: 2rem;
+            color: #ffd700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 0.5rem;
+        }
+
+        .section-title p {
+            font-size: 1.05rem;
+            color: #e0e0e0;
+            opacity: 0.85;
+        }
+
+        .contact-form {
+            background: rgba(255,255,255,0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #ffd700;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid rgba(255,255,255,0.3);
+            border-radius: 8px;
+            background: rgba(255,255,255,0.1);
+            color: white;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #d32f2f;
+            box-shadow: 0 0 0 2px rgba(211, 47, 47, 0.2);
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: rgb(168, 77, 77);
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, #d32f2f, #b71c1c);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 25px;
+            font-size: 1.1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(211, 47, 47, 0.3);
+            width: 100%;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(211, 47, 47, 0.4);
+            background: linear-gradient(135deg, #e53935, #c62828);
+        }
+
+        .social-section {
+            padding: 3rem 2rem;
+            text-align: center;
+            background: rgba(255,255,255,0.05);
+            margin: 2rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+
+        .social-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .social-card {
+            background: rgba(255,255,255,0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .social-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .social-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .social-card h3 {
+            color: #ffd700;
+            margin-bottom: 0.5rem;
+        }
+
+        .social-card p {
+            color: #e0e0e0;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        .social-link {
+            color: #d32f2f;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .social-link:hover {
+            color: #ffd700;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .back-button {
+                position: relative;
+                top: auto;
+                left: auto;
+                margin: 1rem;
+                display: inline-block;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="./frontpage.html" class="back-button">← Back to Home</a>
+
+    <header class="header">
+        <h1>Contact Us</h1>
+        <p>We'd love to hear from you</p>
+    </header>
+
+    <section class="hero-section">
+        <h2>Get in Touch</h2>
+        <p>Whether you have questions about tickets, volunteering, the academy, or partnerships, our team is here to help.</p>
+    </section>
+
+    <section class="contact-details">
+        <div class="details-grid">
+            <div class="detail-card">
+                <div class="detail-title">General Enquiries</div>
+                <div class="detail-text">info@ilfordunitedfc.co.uk</div>
+            </div>
+            <div class="detail-card">
+                <div class="detail-title">Ticket Office</div>
+                <div class="detail-text">tickets@ilfordunitedfc.co.uk</div>
+            </div>
+            <div class="detail-card">
+                <div class="detail-title">Phone</div>
+                <div class="detail-text">+44 20 7123 4567</div>
+            </div>
+            <div class="detail-card">
+                <div class="detail-title">Stadium Address</div>
+                <div class="detail-text">123 High Road, Ilford, IG1 1AA</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact-section">
+        <div class="section-title">
+            <h2>Send Us a Message</h2>
+            <p>Have questions or want to get involved? We'd love to hear from you!</p>
+        </div>
+        
+        <form class="contact-form" action="mailto:abdulhussain2437@gmail.com" method="post" enctype="text/plain">
+            <div class="form-group">
+                <label for="name">Name *</nlabel>
+                <input type="text" id="name" name="name" required placeholder="Enter your full name">
+            </div>
+            
+            <div class="form-group">
+                <label for="email">Email Address *</label>
+                <input type="email" id="email" name="email" required placeholder="Enter your email address">
+            </div>
+            
+            <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone" placeholder="Enter your phone number">
+            </div>
+
+            <div class="form-group">
+                <label for="interest">Area of Interest</label>
+                <select id="interest" name="interest" style="background-color: rgb(0, 0, 0);">
+                    <option value="">Select your interest</option>
+                    <option value="Tickets">Tickets</option>
+                    <option value="Volunteering">Volunteering</option>
+                    <option value="Academy">Youth Academy</option>
+                    <option value="Partnership">Partnerships</option>
+                    <option value="General">General Inquiry</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="message">Message *</label>
+                <textarea id="message" name="message" rows="5" required placeholder="Tell us how you'd like to get involved or ask any questions..."></textarea>
+            </div>
+            
+            <button type="submit" class="submit-btn">Send Message</button>
+        </form>
+    </section>
+
+    <section class="social-section">
+        <div class="section-title">
+            <h2>Follow Us</h2>
+            <p>Stay connected with Ilford United on social media</p>
+        </div>
+        
+        <div class="social-grid">
+            <div class="social-card">
+                <span class="social-icon">📘</span>
+                <h3>Facebook</h3>
+                <p>News, events and matchday updates</p>
+                <a href="#" class="social-link">@IlfordUnitedFC</a>
+            </div>
+            
+            <div class="social-card">
+                <span class="social-icon">📷</span>
+                <h3>Instagram</h3>
+                <p>Behind-the-scenes and community highlights</p>
+                <a href="#" class="social-link">@IlfordUnitedFC</a>
+            </div>
+            
+            <div class="social-card">
+                <span class="social-icon">🐦</span>
+                <h3>Twitter</h3>
+                <p>Real-time updates and live commentary</p>
+                <a href="#" class="social-link">@IlfordUnitedFC</a>
+            </div>
+            
+            <div class="social-card">
+                <span class="social-icon">📺</span>
+                <h3>YouTube</h3>
+                <p>Highlights, interviews and features</p>
+                <a href="#" class="social-link">Ilford United FC</a>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

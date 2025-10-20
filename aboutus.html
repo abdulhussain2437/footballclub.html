@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Ilford United Football Club</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            color: white;
+            line-height: 1.6;
+        }
+
+        .header {
+            background: linear-gradient(90deg, #d32f2f 0%, #b71c1c 100%);
+            padding: 2rem 0;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+
+        .back-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: linear-gradient(135deg, #d32f2f, #b71c1c);
+            color: white;
+            text-decoration: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(211, 47, 47, 0.3);
+            z-index: 1000;
+        }
+
+        .back-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(211, 47, 47, 0.4);
+            background: linear-gradient(135deg, #e53935, #c62828);
+        }
+
+        .club-info {
+            padding: 3rem 2rem;
+            text-align: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .club-badge {
+            background: rgba(255,255,255,0.1);
+            padding: 2rem;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+            margin: 2rem auto;
+            max-width: 400px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+        }
+
+        .club-badge img {
+            width: 200px;
+            height: 200px;
+            object-fit: contain;
+            margin-bottom: 1rem;
+        }
+
+        .club-badge h2 {
+            color: #ffd700;
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .club-badge p {
+            color: #e0e0e0;
+            font-size: 1.1rem;
+        }
+
+        .players-section {
+            padding: 3rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h1 {
+            font-size: 2.5rem;
+            color: #ffd700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+        }
+
+        .players-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .player-card {
+            background: rgba(255,255,255,0.1);
+            border-radius: 15px;
+            padding: 1.5rem;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .player-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #d32f2f, #ffd700);
+        }
+
+        .player-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .player-image {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 1rem;
+            border: 3px solid #d32f2f;
+            box-shadow: 0 4px 15px rgba(211, 47, 47, 0.3);
+        }
+
+        .player-name {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #ffd700;
+            margin-bottom: 0.5rem;
+        }
+
+        .player-position {
+            font-size: 1rem;
+            color: #e0e0e0;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .player-number {
+            font-size: 1.2rem;
+            color: #d32f2f;
+            font-weight: 700;
+            background: rgba(211, 47, 47, 0.1);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            display: inline-block;
+        }
+
+        .position-section {
+            margin-bottom: 4rem;
+        }
+
+        .position-title {
+            color: #ffd700;
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .players-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            }
+            
+            .back-button {
+                position: relative;
+                top: auto;
+                left: auto;
+                margin: 1rem;
+                display: inline-block;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="./frontpage.html" class="back-button">← Back to Home</a>
+
+    <header class="header">
+        <h1>About Ilford United</h1>
+        <p>Established 1937 • League Two • Professional Football Club</p>
+    </header>
+
+    <section class="club-info">
+        <div class="club-badge">
+            <img src="https://r2.thesportsdb.com/images/media/league/badge/jmb3ms1688770451.png" alt="League Two Badge">
+            <h2>League Two</h2>
+            <p>Proud to compete in England's professional football league</p>
+        </div>
+    </section>
+
+    <section class="players-section">
+        <div class="section-title">
+            <h1>First Team Squad</h1>
+        </div>
+
+        <div class="position-section">
+            <h2 class="position-title">Goalkeepers</h2>
+            <div class="players-grid">
+                <div class="player-card">
+                    <img src="https://cdn.futwiz.com/assets/img/fc25/faces/257480.png" alt="Johan Brandt" class="player-image">
+                    <h3 class="player-name">Johan Brandt</h3>
+                    <p class="player-position">Goalkeeper</p>
+                    <span class="player-number">1</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="position-section">
+            <h2 class="position-title">Defenders</h2>
+            <div class="players-grid">
+                <div class="player-card">
+                    <img src="https://cdn.futwiz.com/assets/img/fc25/faces/248313.png" alt="Nazeem Chauhudry" class="player-image">
+                    <h3 class="player-name">Nazeem Chauhudry</h3>
+                    <p class="player-position">Defender</p>
+                    <span class="player-number">2</span>
+                </div>
+
+                <div class="player-card">
+                    <img src="https://cdn.futwiz.com/assets/img/fc25/faces/246873.png" alt="Walter O'Brien" class="player-image">
+                    <h3 class="player-name">Walter O'Brien</h3>
+                    <p class="player-position">Defender</p>
+                    <span class="player-number">3</span>
+                </div>
+
+                <div class="player-card">
+                    <img src="https://cdn.futwiz.com/assets/img/fc25/faces/73408.png" alt="Seth Dawnmere" class="player-image">
+                    <h3 class="player-name">Seth Dawnmere</h3>
+                    <p class="player-position">Defender</p>
+                    <span class="player-number">4</span>
+                </div>
+
+                <div class="player-card">
+                    <img src="https://game-assets.fut.gg/cdn-cgi/image/quality=100,format=auto,width=500/2025/player-item/25-241938.456776bbd9fb1f6abbd7e44e290c135bd28428dd4362322e773956c1868a4588.webp" alt="Saddam Osama" class="player-image">
+                    <h3 class="player-name">Saddam Osama</h3>
+                    <p class="player-position">Defender</p>
+                    <span class="player-number">5</span>
+                </div>
+
+                <div class="player-card">
+                    <img src="https://game-assets.fut.gg/cdn-cgi/image/quality=100,format=auto,width=500/2025/player-item/25-72208.373dada23df28e99d31c0776cb2d47dd036f06b748b7907b01bc4a702776d659.webp" alt="Miguel Martinez" class="player-image">
+                    <h3 class="player-name">Miguel Martinez</h3>
+                    <p class="player-position">Defender</p>
+                    <span class="player-number">6</span>
+                </div>
+
+                <div class="player-card">
+                    <img src="https://game-assets.fut.gg/cdn-cgi/image/quality=100,format=auto,width=500/2025/player-item/25-260972.67a1620f689a5d4f3d899ae5d3d3f1a5c2cd86b38def1045c39f7baa1244a52c.webp" alt="Abdi Rakesh" class="player-image">
+                    <h3 class="player-name">Abdi Rakesh</h3>
+                    <p class="player-position">Defender</p>
+                    <span class="player-number">22</span>
+                </div>
+
+                <div class="player-card">
+                    <img src="https://game-assets.fut.gg/cdn-cgi/image/quality=100,format=auto,width=500/2025/player-item/25-268435.5364d5e4e96fa3c0499bb4e1665bd5d514311f667e19ee31d5888cb1d3290a4e.webp" alt="Winston Liam" class="player-image">
+                    <h3 class="player-name">Winston Liam</h3>
+                    <p class="player-position">Defender</p>
+                    <span class="player-number">31</span>
+                </div>
+
+                <div class="player-card">
+                    <img src="https://game-assets.fut.gg/cdn-cgi/image/quality=100,format=auto,width=500/2025/player-item/25-246029.3c640ffdb64e6919329232420dca5fad7a8a10a7de2188e355c256e0ced0b4c8.webp" alt="Abdi Rakesh" class="player-image">
+                    <h3 class="player-name">Lee Wun Kai</h3>
+                    <p class="player-position">Defender</p>
+                    <span class="player-number">33</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="position-section">
+            <h2 class="position-title">Midfielders</h2>
+            <div class="players-grid">
+                <div class="player-card">
+                    <img src="https://cdn.futwiz.com/assets/img/fc25/faces/194372.png" alt="Altzar Taskin" class="player-image">
+                    <h3 class="player-name">Altzar Taskin</h3>
+                    <p class="player-position">Midfielder</p>
+                    <span class="player-number">8</span>
+                </div>
+
+                <div class="player-card">
+                    <img src="https://cdn.futwiz.com/assets/img/fc25/faces/276845.png" alt="Smith Fletcher" class="player-image">
+                    <h3 class="player-name">Smith Fletcher</h3>
+                    <p class="player-position">Midfielder</p>
+                    <span class="player-number">14</span>
+                </div>
+
+                <div class="player-card">
+                    <img src="https://cdn.futwiz.com/assets/img/fc25/faces/211990.png" alt="Dragan Kapetanovic" class="player-image">
+                    <h3 class="player-name">Dragan Kapetanovic</h3>
+                    <p class="player-position">Midfielder</p>
+                    <span class="player-number">17</span>
+                </div>
+
+                <div class="player-card">
+                    <img src="https://cdn.futwiz.com/assets/img/fc25/faces/255912.png" alt="Abdulaziz Suleyman" class="player-image">
+                    <h3 class="player-name">Abdulaziz Suleyman</h3>
+                    <p class="player-position">Midfielder</p>
+                    <span class="player-number">20</span>
+                </div>
+                <div>
+                    <img src="https://cdn.futwiz.com/assets/img/fc25/faces/235619.png" alt="Matthew Sanolita" class="player-image">
+                    <h3 class="player-name">Matthew Sanolita</h3>
+                    <p class="player-position">Midfielder - ON LOAN IN IRELAND</p>
+                    <span class="player-number">21</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="position-section">
+            <h2 class="position-title">Forwards</h2>
+            <div class="players-grid">
+                <div class="player-card">
+                    <img src="https://cdn.futwiz.com/assets/img/fc25/faces/213313.png" alt="Paul Headsmith" class="player-image">
+                    <h3 class="player-name">Paul Headsmith</h3>
+                    <p class="player-position">Forward</p>
+                    <span class="player-number">9</span>
+                </div>
+
+                <div class="player-card">
+                    <img src="https://cdn.futwiz.com/assets/img/fc25/faces/274209.png" alt="Enrique Alaveraz" class="player-image">
+                    <h3 class="player-name">Enrique Alaveraz</h3>
+                    <p class="player-position">Forward</p>
+                    <span class="player-number">10</span>
+                </div>
+
+                <div class="player-card">
+                    <img src="https://cdn.futwiz.com/assets/img/fc25/faces/243112.png" alt="Xang He" class="player-image">
+                    <h3 class="player-name">Xang He</h3>
+                    <p class="player-position">Forward</p>
+                    <span class="player-number">11</span>
+                </div>
+
+                <div class="player-card">
+                    <img src="https://cdn.futwiz.com/assets/img/fc25/faces/251257.png" alt="Aaron White" class="player-image">
+                    <h3 class="player-name">Aaron White</h3>
+                    <p class="player-position">Forward</p>
+                    <span class="player-number">19</span>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
